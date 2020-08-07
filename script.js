@@ -1,7 +1,7 @@
 /**
  * ok: Update the text in the "Formatted Text" section as a user types in the textarea
- * TODO TOGETHER: Add a .bold, .italic classes to "Formatted Text" when the appropriate button is clicked
- * TODO: Add an .underline class to "Formatted Text" when Underline button is clicked
+ * ok TOGETHER: Add a .bold, .italic classes to "Formatted Text" when the appropriate button is clicked
+ * ok: Add an .underline class to "Formatted Text" when Underline button is clicked
  * TODO: Toggle the align style for "Formatted Text" when the appropriate button is clicked
  */
 
@@ -12,7 +12,7 @@
  */
 function updateText(){
   let text = document.getElementById('text-input').value;
-  document.getElementById('text-output').value = text;
+  document.getElementById('text-output').innerHTML = text;
   console.log(text);
 }
 
@@ -25,7 +25,7 @@ function updateText(){
  */
 function makeBold(elem){
   elem.classList.toggle('active');
-  console.log(elem);
+  document.getElementById('text-output').classList.toggle('bold');
 }
 
 /**
@@ -33,7 +33,7 @@ function makeBold(elem){
  */
 function makeItalic(elem){
   elem.classList.toggle('active');
-
+  document.getElementById('text-output').classList.toggle('italic');
 }
 
 /**
@@ -43,7 +43,21 @@ function makeItalic(elem){
  * HINT: Use contains, remove, and add functions
  */
 function makeUnderline(elem){
+  let textOutput = document.getElementById('text-output');
+
+  if (textOutput.classList.contains('underline')) {
+    textOutput.classList.remove('underline');
+  } else {
+    textOutput.classList.add('underline');
+  }
   elem.classList.toggle('active');
+}
+
+function clearDecoration() {
+  document.getElementById('text-output').classList.remove('bold', 'italic', 'underline');
+  document.getElementById('bold').classList.remove('active');
+  document.getElementById('italic').classList.remove('active');
+  document.getElementById('underline').classList.remove('active');
 }
 
 /**
